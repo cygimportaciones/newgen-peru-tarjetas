@@ -238,6 +238,8 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 .withdrawal-modal > div:nth-child(2) { margin-top: .75rem !important; }
 .withdrawal-modal > div:first-child { position: relative; }
 .withdrawal-modal > div:first-child > button { position: absolute; top: 0; right: 0; }
+/* Los datos de cuenta se consultan desde el botón superior, no dentro del selector de estados. */
+.withdrawal-modal > div[class*='border-emerald-200'][class*='bg-emerald-50'] { display: none; }
 .withdrawal-modal-sent { border-color: #38a37f; background: linear-gradient(145deg, #e8fbf2, #c9f2df); }
 .withdrawal-modal-incident { border-color: #ef7272; background: linear-gradient(145deg, #fff1f1, #ffdada); }
 .withdrawal-modal-missing { border-color: #8b5cf6; background: linear-gradient(145deg, #f4edff, #e4d4ff); }
