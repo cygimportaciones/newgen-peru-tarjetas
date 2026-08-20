@@ -13,6 +13,7 @@ const tabs: [Tab, string][] = [['Dashboard', '⌂'], ['Tarjetas', '▣'], ['Reti
 
 export default function Home() {
   const [tab, setTab] = useState<Tab>(() => typeof window === 'undefined' ? 'Dashboard' : (localStorage.getItem('newgen-active-tab') as Tab) || 'Dashboard')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [rainBills, setRainBills] = useState<RainBill[]>([])
   const [withdrawalGroups, setWithdrawalGroups] = useState<WithdrawalGroup[]>([])
   const [registeredWithdrawalGroups, setRegisteredWithdrawalGroups] = useState<RegisteredWithdrawalGroup[]>([])
@@ -82,14 +83,16 @@ export default function Home() {
   const selectedWithdrawalGroup = registeredWithdrawalGroups.find(group => group.id === expandedGroupId) ?? null
 
   return <main className="min-h-screen bg-slate-100"><div className="flex min-h-screen">
-    <aside className="newgen-sidebar newgen-pro-sidebar flex w-full shrink-0 flex-col p-4 lg:h-screen lg:w-80 lg:sticky lg:top-0 lg:overflow-y-auto lg:p-5">
+    {mobileMenuOpen && <button aria-label="Cerrar menú" className="newgen-mobile-scrim" onClick={() => setMobileMenuOpen(false)} />}
+    <aside className={`newgen-sidebar newgen-pro-sidebar ${mobileMenuOpen ? 'newgen-mobile-open' : ''} flex w-full shrink-0 flex-col p-4 lg:h-screen lg:w-80 lg:sticky lg:top-0 lg:overflow-y-auto lg:p-5`}>
       <div className="border-b border-white/10 pb-5">
         <Image src="/brand/newgen-peru.png" alt="Newgen Peru" width={560} height={280} className="h-16 w-32 object-contain lg:h-20 lg:w-40" />
         <p className="mt-1 text-xs font-black uppercase tracking-[.23em] text-white/75">Newgen Peru</p>
+        <button aria-label="Cerrar menú" onClick={() => setMobileMenuOpen(false)} className="newgen-mobile-close">×</button>
       </div>
       <span className="sidebar-money-rain" aria-hidden="true">{rainBills.map(bill => <span key={bill.id} className="sidebar-rain-bill" style={{ left: `${bill.left}%`, width: `${bill.width + 8}px`, height: `${Math.round((bill.width + 8) * .62)}px`, '--bill-duration': `${bill.duration}s`, '--bill-drift': `${bill.drift}px`, '--bill-rotation': `${bill.rotation}deg`, '--bill-glow-delay': `${bill.glowDelay}s` } as CSSProperties}>$</span>)}</span>
       <nav className="mt-5 grid grid-cols-4 gap-2 lg:block lg:space-y-2">
-        {tabs.map(([name, icon]) => <button key={name} onClick={() => setTab(name)} className={tab === name ? 'newgen-nav-active w-full rounded-2xl px-4 py-4 text-center text-xs font-black lg:text-left lg:text-lg' : 'w-full rounded-2xl px-4 py-4 text-center text-xs font-bold text-white/75 hover:bg-white/10 hover:text-white lg:text-left lg:text-lg'}><span className="mr-0 text-lg lg:mr-4">{icon}</span>{name}</button>)}
+        {tabs.map(([name, icon]) => <button key={name} onClick={() => { setTab(name); setMobileMenuOpen(false) }} className={tab === name ? 'newgen-nav-active w-full rounded-2xl px-4 py-4 text-center text-xs font-black lg:text-left lg:text-lg' : 'w-full rounded-2xl px-4 py-4 text-center text-xs font-bold text-white/75 hover:bg-white/10 hover:text-white lg:text-left lg:text-lg'}><span className="mr-0 text-lg lg:mr-4">{icon}</span>{name}</button>)}
       </nav>
       <div className="mt-6 lg:mt-auto">
         <p className="mb-2 px-1 text-[10px] font-black uppercase tracking-[.16em] text-emerald-100/60">Usuario:</p>
@@ -99,7 +102,7 @@ export default function Home() {
     </aside>
 
     <section className="newgen-workspace min-w-0 flex-1">
-      <header className="newgen-topbar"><div className="newgen-topbar-title"><p>Sistema de tarjetas</p></div><div className="newgen-user-badge"><span>●</span><div><b>Administrador</b><small>Luis</small></div></div></header>
+      <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><p>Sistema de tarjetas</p></div><div className="newgen-user-badge"><span>●</span><div><b>Administrador</b><small>Luis</small></div></div></header>
       <div className="newgen-content p-5 sm:p-8 lg:p-10">
           <h1 className="text-3xl font-black text-slate-900">{tab === 'Enviadas' ? 'Tarjetas enviadas' : tab === 'Faltantes' ? 'Tarjetas faltantes' : tab}</h1>
           {(tab === 'Retiros' || tab === 'Enviadas' || tab === 'Faltantes' || tab === 'Incidencias') && <WithdrawalCenter activeSection={tab} onNavigate={section => setTab(section)} />}
