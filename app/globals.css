@@ -277,7 +277,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
     position: fixed !important;
     inset: 0 auto 0 0;
     z-index: 60;
-    width: min(86vw, 21rem) !important;
+    width: min(76vw, 18rem) !important;
     height: 100dvh !important;
     padding: 1rem !important;
     overflow-y: auto !important;
