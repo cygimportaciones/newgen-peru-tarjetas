@@ -269,3 +269,66 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .newgen-user-badge small { font-size: .58rem; }
   .newgen-content { min-height: auto; }
 }
+
+/* Móvil: misma interfaz, con controles amplios y contenido legible sin alterar el escritorio. */
+@media (max-width: 767px) {
+  html, body { overflow-x: hidden; }
+  .newgen-pro-sidebar {
+    padding: .7rem .75rem .85rem !important;
+    box-shadow: 0 8px 24px rgba(3,26,22,.2);
+  }
+  .newgen-pro-sidebar > div:first-child {
+    min-height: 60px;
+    padding: .35rem .65rem;
+    gap: .55rem;
+    border-radius: 12px;
+  }
+  .newgen-pro-sidebar > div:first-child img { width: 78px; height: 48px; }
+  .newgen-pro-sidebar > div:first-child p { font-size: .96rem; letter-spacing: .055em; }
+  .newgen-pro-sidebar > div:first-child p::after { margin-top: .22rem; font-size: .62rem; letter-spacing: .1em; }
+  .newgen-sidebar nav {
+    display: flex !important;
+    gap: .5rem;
+    margin-top: .75rem !important;
+    overflow-x: auto;
+    padding: .15rem .1rem .4rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .newgen-sidebar nav::-webkit-scrollbar { display: none; }
+  .newgen-sidebar nav button,
+  .newgen-sidebar nav button.newgen-nav-active {
+    flex: 0 0 auto;
+    min-width: 82px;
+    padding: .62rem .7rem !important;
+    border-radius: 14px;
+    font-size: .68rem !important;
+    line-height: 1.1;
+    scroll-snap-align: start;
+  }
+  .newgen-sidebar nav button span { display: block; margin: 0 0 .24rem !important; font-size: 1rem !important; }
+  .newgen-sidebar > div:nth-of-type(2) { margin-top: .65rem !important; }
+  .newgen-sidebar > div:nth-of-type(2) > p { display: none; }
+  .newgen-user-card { border-radius: 16px !important; padding: .65rem .8rem !important; }
+  .newgen-user-card > p { font-size: .67rem !important; line-height: 1.25rem !important; text-align: center; }
+  .newgen-user-card > div { margin-top: .35rem !important; }
+  .newgen-role-badge { padding: .3rem .65rem !important; font-size: .64rem !important; }
+  .newgen-sidebar > button:last-child { margin-top: .65rem !important; padding: .72rem 1rem !important; font-size: .76rem !important; }
+  .newgen-topbar { min-height: 62px; padding: .72rem .9rem; }
+  .newgen-topbar p { font-size: .76rem; }
+  .newgen-topbar-title::before { width: 25px; height: 18px; margin-right: .45rem; }
+  .newgen-user-badge { padding: .32rem .45rem .32rem .32rem; border-radius: 10px; }
+  .newgen-user-badge > span { width: 20px; height: 20px; border-radius: 6px; font-size: .55rem; }
+  .newgen-user-badge b { font-size: .6rem; }
+  .newgen-user-badge small { font-size: .52rem; }
+  .newgen-content { padding: 1rem .75rem 1.35rem !important; }
+  .newgen-content > h1 { font-size: 1.75rem !important; line-height: 1.1; }
+  .withdrawal-center > section { padding: 1rem !important; border-radius: 20px !important; }
+  .withdrawal-center .withdrawal-detail { border-radius: 20px !important; }
+  .withdrawal-table { min-width: 540px; }
+  .withdrawal-table tbody td { padding-top: .75rem; padding-bottom: .75rem; }
+  .withdrawal-modal-backdrop { align-items: end; padding: .65rem; }
+  .withdrawal-modal { max-height: calc(100dvh - 1.3rem); overflow-y: auto; border-radius: 22px 22px 18px 18px; padding: 1.1rem; }
+  .withdrawal-modal h4 { font-size: 1.12rem !important; line-height: 1.2; }
+  .withdrawal-modal > div:last-child > div { gap: .45rem !important; }
+}
