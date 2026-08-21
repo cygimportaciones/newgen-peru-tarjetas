@@ -105,6 +105,7 @@ export default function Home() {
   }, [expandedGroupId, registeredWithdrawalGroups])
   useEffect(() => { document.querySelectorAll('button').forEach(button => { if (button.textContent?.includes('Grupo ')) button.style.display = !groupSearch || button.textContent.includes(`Grupo ${groupSearch.trim()}`) ? '' : 'none' }) }, [groupSearch, registeredWithdrawalGroups, expandedGroupId])
   const selectedWithdrawalGroup = registeredWithdrawalGroups.find(group => group.id === expandedGroupId) ?? null
+  const pageTitle = tab === 'Enviadas' ? 'Tarjetas enviadas' : tab === 'Faltantes' ? 'Tarjetas faltantes' : tab
 
   return <main className="min-h-screen bg-slate-100"><div className="flex min-h-screen">
     {mobileMenuOpen && <button aria-label="Cerrar menú" className="newgen-mobile-scrim" onClick={() => setMobileMenuOpen(false)} />}
@@ -125,9 +126,9 @@ export default function Home() {
     </aside>
 
     <section className="newgen-workspace min-w-0 flex-1">
-      <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><p>Sistema de tarjetas</p></div><div className="newgen-user-badge"><span>●</span><div><b>Administrador</b><small>Luis</small></div></div></header>
+      <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><p><span className="newgen-desktop-title">Sistema de tarjetas</span><span className="newgen-mobile-title">{pageTitle}</span></p></div><div className="newgen-user-badge"><span>●</span><div><b>Administrador</b><small>Luis</small></div></div></header>
       <div className="newgen-content p-5 sm:p-8 lg:p-10">
-          <h1 className="text-3xl font-black text-slate-900">{tab === 'Enviadas' ? 'Tarjetas enviadas' : tab === 'Faltantes' ? 'Tarjetas faltantes' : tab}</h1>
+          <h1 className="text-3xl font-black text-slate-900">{pageTitle}</h1>
           {(tab === 'Retiros' || tab === 'Enviadas' || tab === 'Faltantes' || tab === 'Incidencias') && <WithdrawalCenter activeSection={tab} onNavigate={section => setTab(section)} />}
         {tab === 'Retiros' && <div className="mt-5 max-w-sm"><label className="text-xs font-black uppercase tracking-[.12em] text-slate-500">Buscar por número de grupo<input type="search" inputMode="numeric" value={groupSearch} placeholder="Ej. 802, 091, 078" onChange={event => setGroupSearch(event.currentTarget.value)} className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-800 outline-none focus:border-emerald-500" /></label></div>}
         {tab === 'Dashboard' && <div className="mt-7 grid gap-4 sm:grid-cols-3">{[['Tarjetas registradas', '3'], ['Sin incidencias', '2'], ['Incidencias pendientes', '1']].map(x => <article key={x[0]} className="rounded-3xl bg-white p-6 shadow-sm"><p className="text-sm font-bold text-slate-500">{x[0]}</p><p className="mt-2 text-3xl font-black text-emerald-700">{x[1]}</p></article>)}</div>}
