@@ -352,6 +352,12 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .withdrawal-center > div:first-child { margin-top: .15rem !important; }
   .withdrawal-center > section { margin-top: .55rem !important; }
   .withdrawal-center > section { padding: 1rem !important; border-radius: 20px !important; }
+  .withdrawal-intro { display: none; }
+  .newgen-registered-title { font-size: 1rem !important; }
+  .withdrawal-group-period, .withdrawal-group-organization, .withdrawal-group-number { display: none; }
+  .newgen-mobile-group-label { display: block !important; overflow: hidden; margin: 0; color: inherit; font-size: .78rem; font-weight: 900; line-height: 1.25rem; text-overflow: ellipsis; white-space: nowrap; }
+  .newgen-mobile-group-label span { font-weight: 700; }
+  .newgen-group-card { width: min(78vw, 18rem) !important; padding: .65rem .8rem !important; }
   .withdrawal-center .withdrawal-detail { border-radius: 20px !important; }
   .withdrawal-table { min-width: 540px; }
   .withdrawal-table tbody td { padding-top: .75rem; padding-bottom: .75rem; }
@@ -360,6 +366,8 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .withdrawal-modal h4 { font-size: 1.12rem !important; line-height: 1.2; }
   .withdrawal-modal > div:last-child > div { gap: .45rem !important; }
 }
+
+.newgen-mobile-group-label { display: none; }
 
 @media (min-width: 768px) {
   .newgen-mobile-menu, .newgen-mobile-scrim { display: none; }
