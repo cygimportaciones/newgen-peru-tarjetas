@@ -88,7 +88,6 @@ export default function Home() {
       <div className="border-b border-white/10 pb-5">
         <Image src="/brand/newgen-peru.png" alt="Newgen Peru" width={560} height={280} className="h-16 w-32 object-contain lg:h-20 lg:w-40" />
         <p className="mt-1 text-xs font-black uppercase tracking-[.23em] text-white/75">Newgen Peru</p>
-        <button aria-label="Cerrar menú" onClick={() => setMobileMenuOpen(false)} className="newgen-mobile-close">×</button>
       </div>
       <span className="sidebar-money-rain" aria-hidden="true">{rainBills.map(bill => <span key={bill.id} className="sidebar-rain-bill" style={{ left: `${bill.left}%`, width: `${bill.width + 8}px`, height: `${Math.round((bill.width + 8) * .62)}px`, '--bill-duration': `${bill.duration}s`, '--bill-drift': `${bill.drift}px`, '--bill-rotation': `${bill.rotation}deg`, '--bill-glow-delay': `${bill.glowDelay}s` } as CSSProperties}>$</span>)}</span>
       <nav className="mt-5 grid grid-cols-4 gap-2 lg:block lg:space-y-2">

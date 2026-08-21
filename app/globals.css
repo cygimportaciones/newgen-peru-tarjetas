@@ -277,7 +277,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
     position: fixed !important;
     inset: 0 auto 0 0;
     z-index: 60;
-    width: min(70vw, 16.5rem) !important;
+    width: min(74vw, 17.5rem) !important;
     height: 100dvh !important;
     padding: 1rem !important;
     overflow-y: auto !important;
@@ -289,15 +289,14 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .newgen-mobile-scrim { position: fixed; inset: 0; z-index: 50; display: block; border: 0; background: rgba(2, 20, 15, .52); backdrop-filter: blur(2px); }
   .newgen-mobile-menu { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-content: center; gap: 4px; border: 1px solid #d8e6e0; border-radius: 11px; background: #f5faf7; box-shadow: 0 4px 12px rgba(22,55,47,.08); }
   .newgen-mobile-menu i { display: block; width: 17px; height: 2px; border-radius: 99px; background: #19745d; }
-  .newgen-mobile-close { display: grid; position: absolute; top: .6rem; right: .6rem; width: 32px; height: 32px; place-items: center; border: 1px solid rgba(175,241,214,.26); border-radius: 10px; background: rgba(255,255,255,.09); color: #e6fff3; font-size: 1.45rem; line-height: 1; }
   .newgen-pro-sidebar > div:first-child {
     min-height: 74px;
-    padding: .45rem 2.7rem .45rem .5rem;
-    gap: .5rem;
+    padding: .45rem .6rem;
+    gap: .65rem;
     border-radius: 12px;
   }
-  .newgen-pro-sidebar > div:first-child img { width: 72px; height: 48px; }
-  .newgen-pro-sidebar > div:first-child p { font-size: .88rem; letter-spacing: .045em; }
+  .newgen-pro-sidebar > div:first-child img { width: 84px; height: 52px; }
+  .newgen-pro-sidebar > div:first-child p { font-size: .98rem; letter-spacing: .055em; }
   .newgen-pro-sidebar > div:first-child p::after { margin-top: .25rem; font-size: .67rem; letter-spacing: .1em; }
   .newgen-sidebar nav {
     display: block !important;
@@ -315,11 +314,11 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
     margin-bottom: .5rem;
     padding: .82rem .9rem !important;
     border-radius: 14px;
-    font-size: .88rem !important;
+    font-size: 1rem !important;
     line-height: 1.1;
     text-align: left !important;
   }
-  .newgen-sidebar nav button span { display: inline; margin: 0 .75rem 0 0 !important; font-size: 1.15rem !important; }
+  .newgen-sidebar nav button span { display: inline; margin: 0 .8rem 0 0 !important; font-size: 1.25rem !important; }
   .newgen-sidebar > div:nth-of-type(2) { margin-top: .75rem !important; }
   .newgen-sidebar > div:nth-of-type(2) > p { display: block; }
   .newgen-user-card { border-radius: 18px !important; padding: .85rem !important; }
@@ -348,5 +347,5 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 }
 
 @media (min-width: 768px) {
-  .newgen-mobile-menu, .newgen-mobile-close, .newgen-mobile-scrim { display: none; }
+  .newgen-mobile-menu, .newgen-mobile-scrim { display: none; }
 }
