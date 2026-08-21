@@ -126,7 +126,7 @@ export default function Home() {
     </aside>
 
     <section className="newgen-workspace min-w-0 flex-1">
-      <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><p><span className="newgen-desktop-title">Sistema de tarjetas</span><span className="newgen-mobile-title">{pageTitle}</span></p></div><div className="newgen-user-badge"><span>●</span><div><b><span className="newgen-desktop-role">Administrador</span><span className="newgen-mobile-role">Admin / Luis</span></b><small>Luis</small></div></div></header>
+      <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><p><span className="newgen-desktop-title">{pageTitle}</span><span className="newgen-mobile-title">{pageTitle}</span></p></div><div className="newgen-user-badge"><span>●</span><div><b>Admin / Luis</b></div></div></header>
       <div className="newgen-content p-5 sm:p-8 lg:p-10">
           <h1 className="text-3xl font-black text-slate-900">{pageTitle}</h1>
           {(tab === 'Retiros' || tab === 'Enviadas' || tab === 'Faltantes' || tab === 'Incidencias') && <WithdrawalCenter activeSection={tab} onNavigate={section => setTab(section)} />}

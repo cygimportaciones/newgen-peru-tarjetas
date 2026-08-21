@@ -134,7 +134,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 .newgen-topbar::after { content: none !important; display: none; }
 .newgen-topbar p {
   color: #173d32;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
   font-weight: 850;
   letter-spacing: -.025em;
   text-transform: uppercase;
@@ -142,7 +142,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 .newgen-topbar-title { display: flex; align-items: center; }
 .newgen-mobile-title { display: none; }
 .newgen-mobile-role { display: none; }
-.newgen-topbar-title::before { content: ''; display: block; width: 35px; height: 24px; margin-right: .72rem; border-radius: 7px; background: linear-gradient(to bottom, transparent 0 28%, rgba(255,255,255,.92) 28% 42%, transparent 42% 100%), linear-gradient(145deg, #39ad88, #208467); box-shadow: 0 5px 12px rgba(32,132,103,.2); }
+.newgen-topbar-title::before { display: none; }
 .newgen-user-badge {
   display: inline-flex;
   align-items: center;
@@ -161,6 +161,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 .newgen-user-badge b { font-size: .77rem; font-weight: 850; }
 .newgen-user-badge small { margin-top: .18rem; color: rgba(255,255,255,.78); font-size: .67rem; font-weight: 700; }
 .newgen-content { min-height: calc(100vh - 78px); }
+.newgen-content > h1 { display: none; }
 
 /* Detalle de retiros: el grupo queda como título principal y las filas se leen con rapidez. */
 .min-h-72 p.text-xs.font-black.uppercase.text-emerald-700 {
