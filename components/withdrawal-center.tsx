@@ -239,9 +239,9 @@ export function WithdrawalCenter({ activeSection, onNavigate }: { activeSection:
                 const tone = action?.actionType === 'sent' ? 'border-emerald-300 bg-emerald-50' : action?.actionType === 'bank_unrecognized' ? 'border-red-300 bg-red-50' : action?.actionType === 'missing' ? 'border-violet-300 bg-violet-50' : reading ? 'border-emerald-400 bg-emerald-100 ring-2 ring-emerald-300' : 'border-slate-200 bg-white'
                 return <button type="button" key={`${member.fullName}-${index}`} onClick={() => interactWithMember(member, action)} onDoubleClick={() => { if (!action) setSelectedMember(member) }} className={`w-full rounded-2xl border p-2.5 text-left shadow-sm ${tone} ${selectionMode ? 'active:scale-[.99]' : ''}`}>
                   <div className="withdrawal-member-summary flex items-start justify-between gap-1.5"><p className="min-w-0 text-[13px] font-black leading-5 text-slate-900">{member.fullName}</p><span className="shrink-0 rounded-lg bg-emerald-100 px-1.5 py-0.5 text-[11px] font-black text-emerald-800">N° tjta {member.cardNumber}</span></div>
-                  <div className="mt-1.5 grid grid-cols-2 gap-2 border-t border-slate-200/70 pt-1.5 text-left">
-                    <p><b className="block text-[8px] uppercase tracking-wide text-slate-500">DNI</b><span className="mt-0.5 block text-sm font-black leading-4 text-slate-800">{member.dni}</span></p>
-                    <p><b className="block text-[8px] uppercase tracking-wide text-slate-500">Clave</b><span className="mt-0.5 block text-sm font-black leading-4 text-slate-800">{member.cardKey}</span></p>
+                  <div className="mt-1.5 grid grid-cols-2 gap-2 border-t border-slate-200/70 pt-1.5 text-left text-[12px] leading-4">
+                    <p className="whitespace-nowrap"><b className="mr-1 uppercase tracking-wide text-slate-500">DNI:</b><span className="font-black text-slate-800">{member.dni}</span></p>
+                    <p className="whitespace-nowrap"><b className="mr-1 uppercase tracking-wide text-slate-500">Clave:</b><span className="font-black text-slate-800">{member.cardKey}</span></p>
                   </div>
                   {action && <p className={action.actionType === 'sent' ? 'mt-2 text-xs font-black text-emerald-800' : action.actionType === 'missing' ? 'mt-2 text-xs font-black text-violet-800' : 'mt-2 text-xs font-black text-red-800'}>{action.actionType === 'sent' ? '✓ Tarjeta enviada' : action.actionType === 'missing' ? '◇ Tarjeta no disponible' : '⚠ Tarjeta no reconocida por el banco'}</p>}
                 </button>
