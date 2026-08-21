@@ -106,6 +106,7 @@ export default function Home() {
   useEffect(() => { document.querySelectorAll('button').forEach(button => { if (button.textContent?.includes('Grupo ')) button.style.display = !groupSearch || button.textContent.includes(`Grupo ${groupSearch.trim()}`) ? '' : 'none' }) }, [groupSearch, registeredWithdrawalGroups, expandedGroupId])
   const selectedWithdrawalGroup = registeredWithdrawalGroups.find(group => group.id === expandedGroupId) ?? null
   const pageTitle = tab === 'Enviadas' ? 'Tarjetas enviadas' : tab === 'Faltantes' ? 'Tarjetas faltantes' : tab
+  const pageIcon = tabs.find(([name]) => name === tab)?.[1] ?? '⌂'
 
   return <main className="min-h-screen bg-slate-100"><div className="flex min-h-screen">
     {mobileMenuOpen && <button aria-label="Cerrar menú" className="newgen-mobile-scrim" onClick={() => setMobileMenuOpen(false)} />}
@@ -126,7 +127,7 @@ export default function Home() {
     </aside>
 
     <section className="newgen-workspace min-w-0 flex-1">
-      <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><p><span className="newgen-desktop-title">{pageTitle}</span><span className="newgen-mobile-title">{pageTitle}</span></p></div><div className="newgen-user-badge"><span>●</span><div><b>Admin / Luis</b></div></div></header>
+      <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><span className="newgen-desktop-section-icon" aria-hidden="true">{pageIcon}</span><p><span className="newgen-desktop-title">{pageTitle}</span><span className="newgen-mobile-title">{pageTitle}</span></p></div><div className="newgen-user-badge"><span>●</span><div><b>Admin / Luis</b></div></div></header>
       <div className="newgen-content p-5 sm:p-8 lg:p-10">
           <h1 className="text-3xl font-black text-slate-900">{pageTitle}</h1>
           {(tab === 'Retiros' || tab === 'Enviadas' || tab === 'Faltantes' || tab === 'Incidencias') && <WithdrawalCenter activeSection={tab} onNavigate={section => setTab(section)} />}

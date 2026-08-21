@@ -140,6 +140,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   text-transform: uppercase;
 }
 .newgen-topbar-title { display: flex; align-items: center; }
+.newgen-desktop-section-icon { display: grid; width: 40px; height: 40px; margin-right: .75rem; place-items: center; border: 1px solid #cde9dd; border-radius: 12px; background: linear-gradient(145deg, #eafff5, #d8f4e7); color: #18755d; font-size: 1.35rem; font-weight: 900; box-shadow: 0 5px 12px rgba(32,132,103,.12); }
 .newgen-mobile-title { display: none; }
 .newgen-mobile-role { display: none; }
 .newgen-topbar-title::before { display: none; }
@@ -333,6 +334,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .newgen-topbar { position: sticky; top: 0; z-index: 30; min-height: 62px; justify-content: flex-start; gap: .8rem; padding: .72rem .9rem; }
   .newgen-topbar p { font-size: 1.12rem; }
   .newgen-topbar-title { min-width: 0; }
+  .newgen-desktop-section-icon { display: none; }
   .newgen-topbar .newgen-user-badge { margin-left: auto; }
   .newgen-topbar-title::before { display: none; }
   .newgen-desktop-title { display: none; }
