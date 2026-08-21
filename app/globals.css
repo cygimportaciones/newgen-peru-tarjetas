@@ -141,6 +141,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 }
 .newgen-topbar-title { display: flex; align-items: center; }
 .newgen-mobile-title { display: none; }
+.newgen-mobile-role { display: none; }
 .newgen-topbar-title::before { content: ''; display: block; width: 35px; height: 24px; margin-right: .72rem; border-radius: 7px; background: linear-gradient(to bottom, transparent 0 28%, rgba(255,255,255,.92) 28% 42%, transparent 42% 100%), linear-gradient(145deg, #39ad88, #208467); box-shadow: 0 5px 12px rgba(32,132,103,.2); }
 .newgen-user-badge {
   display: inline-flex;
@@ -339,6 +340,8 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .newgen-user-badge > span { width: 20px; height: 20px; border-radius: 6px; font-size: .55rem; }
   .newgen-user-badge b { font-size: .6rem; }
   .newgen-user-badge small { font-size: .52rem; }
+  .newgen-desktop-role, .newgen-user-badge small { display: none; }
+  .newgen-mobile-role { display: inline; }
   .newgen-content { padding: 1rem .75rem 1.35rem !important; }
   .newgen-content > h1 { display: none; }
   .withdrawal-center > section { padding: 1rem !important; border-radius: 20px !important; }
