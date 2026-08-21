@@ -328,9 +328,9 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .newgen-user-card > div { margin-top: .55rem !important; }
   .newgen-role-badge { padding: .35rem .75rem !important; font-size: .67rem !important; }
   .newgen-sidebar > button:last-child { margin-top: .75rem !important; padding: .85rem 1rem !important; font-size: .82rem !important; }
-  .newgen-topbar { position: sticky; top: 0; z-index: 30; min-height: 62px; justify-content: flex-start; gap: .4rem; padding: .72rem .9rem; }
+  .newgen-topbar { position: sticky; top: 0; z-index: 30; min-height: 62px; justify-content: flex-start; gap: .8rem; padding: .72rem .9rem; }
   .newgen-topbar p { font-size: 1.12rem; }
-  .newgen-topbar-title { min-width: 0; margin-left: -.42rem; }
+  .newgen-topbar-title { min-width: 0; }
   .newgen-topbar .newgen-user-badge { margin-left: auto; }
   .newgen-topbar-title::before { display: none; }
   .newgen-desktop-title { display: none; }
