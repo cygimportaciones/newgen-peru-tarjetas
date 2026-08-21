@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { supabase } from '../lib/supabase'
 import { clearWithdrawalGroups, loadWithdrawalGroupMembers, loadWithdrawalGroups, readWithdrawalGroups, saveWithdrawalGroups, type RegisteredWithdrawalGroup, type WithdrawalGroup, type WithdrawalMember } from '../lib/import-withdrawals'
 import { WithdrawalCenter } from '../components/withdrawal-center'
@@ -14,6 +14,7 @@ const tabs: [Tab, string][] = [['Dashboard', '⌂'], ['Tarjetas', '▣'], ['Reti
 export default function Home() {
   const [tab, setTab] = useState<Tab>(() => typeof window === 'undefined' ? 'Dashboard' : (localStorage.getItem('newgen-active-tab') as Tab) || 'Dashboard')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigationSound = useRef<AudioContext | null>(null)
   const [rainBills, setRainBills] = useState<RainBill[]>([])
   const [withdrawalGroups, setWithdrawalGroups] = useState<WithdrawalGroup[]>([])
   const [registeredWithdrawalGroups, setRegisteredWithdrawalGroups] = useState<RegisteredWithdrawalGroup[]>([])
@@ -27,6 +28,29 @@ export default function Home() {
   const [groupSearch, setGroupSearch] = useState(() => typeof window === 'undefined' ? '' : localStorage.getItem('newgen-group-search') || '')
   const router = useRouter()
   async function logout() { await supabase.auth.signOut(); router.replace('/login') }
+  function playNavigationSound() {
+    if (typeof window === 'undefined') return
+    try {
+      const context = navigationSound.current ?? new window.AudioContext()
+      navigationSound.current = context
+      if (context.state === 'suspended') void context.resume()
+      const oscillator = context.createOscillator()
+      const volume = context.createGain()
+      const now = context.currentTime
+      oscillator.type = 'sine'
+      oscillator.frequency.setValueAtTime(720, now)
+      oscillator.frequency.exponentialRampToValueAtTime(560, now + .075)
+      volume.gain.setValueAtTime(.0001, now)
+      volume.gain.exponentialRampToValueAtTime(.055, now + .008)
+      volume.gain.exponentialRampToValueAtTime(.0001, now + .09)
+      oscillator.connect(volume)
+      volume.connect(context.destination)
+      oscillator.start(now)
+      oscillator.stop(now + .095)
+    } catch {
+      // El cambio de sección debe continuar aunque el dispositivo no permita audio.
+    }
+  }
   async function refreshWithdrawalRegistry() {
     try { setRegisteredWithdrawalGroups(await loadWithdrawalGroups()) }
     catch (error) { setWithdrawalMessage(error instanceof Error ? error.message : 'No se pudo cargar el registro de retiros.') }
@@ -91,7 +115,7 @@ export default function Home() {
       </div>
       <span className="sidebar-money-rain" aria-hidden="true">{rainBills.map(bill => <span key={bill.id} className="sidebar-rain-bill" style={{ left: `${bill.left}%`, width: `${bill.width + 8}px`, height: `${Math.round((bill.width + 8) * .62)}px`, '--bill-duration': `${bill.duration}s`, '--bill-drift': `${bill.drift}px`, '--bill-rotation': `${bill.rotation}deg`, '--bill-glow-delay': `${bill.glowDelay}s` } as CSSProperties}>$</span>)}</span>
       <nav className="mt-5 grid grid-cols-4 gap-2 lg:block lg:space-y-2">
-        {tabs.map(([name, icon]) => <button key={name} onClick={() => { setTab(name); setMobileMenuOpen(false) }} className={tab === name ? 'newgen-nav-active w-full rounded-2xl px-4 py-4 text-center text-xs font-black lg:text-left lg:text-lg' : 'w-full rounded-2xl px-4 py-4 text-center text-xs font-bold text-white/75 hover:bg-white/10 hover:text-white lg:text-left lg:text-lg'}><span className="mr-0 text-lg lg:mr-4">{icon}</span>{name}</button>)}
+        {tabs.map(([name, icon]) => <button key={name} onClick={() => { playNavigationSound(); setTab(name); setMobileMenuOpen(false) }} className={tab === name ? 'newgen-nav-active w-full rounded-2xl px-4 py-4 text-center text-xs font-black lg:text-left lg:text-lg' : 'w-full rounded-2xl px-4 py-4 text-center text-xs font-bold text-white/75 hover:bg-white/10 hover:text-white lg:text-left lg:text-lg'}><span className="mr-0 text-lg lg:mr-4">{icon}</span>{name}</button>)}
       </nav>
       <div className="mt-6 lg:mt-auto">
         <p className="mb-2 px-1 text-[10px] font-black uppercase tracking-[.16em] text-emerald-100/60">Usuario:</p>
