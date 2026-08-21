@@ -347,6 +347,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .newgen-desktop-role, .newgen-user-badge small { display: none; }
   .newgen-mobile-role { display: inline; }
   .newgen-content { padding: 1rem .75rem 1.35rem !important; }
+  .newgen-retiros-content { padding-top: .45rem !important; }
   .newgen-content > h1 { display: none; }
   .withdrawal-center > div:first-child { margin-top: .15rem !important; }
   .withdrawal-center > section { margin-top: .15rem !important; }
