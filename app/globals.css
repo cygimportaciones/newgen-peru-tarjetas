@@ -263,6 +263,24 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 }
 .withdrawal-modal > div:last-child > div > button:nth-child(1),
 .withdrawal-modal > div:last-child > div > button:nth-child(3) { font-size: .72rem; }
+.withdrawal-group-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(2, 26, 18, .72);
+  backdrop-filter: blur(7px);
+}
+.withdrawal-group-modal {
+  width: min(100%, 980px);
+  max-height: min(82dvh, 760px);
+  overflow-y: auto;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .5);
+}
+.withdrawal-group-modal .withdrawal-table thead { color: #b9e9d4; }
+.withdrawal-group-modal .withdrawal-table tbody tr:hover td { background: #c9f5de; }
 
 @media (max-width: 640px) {
   .newgen-topbar { min-height: 82px; padding: 1rem 1.25rem; }
@@ -357,12 +375,13 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .withdrawal-groups-panel { margin-top: .25rem !important; }
   .newgen-groups-list { display: grid !important; gap: .45rem; overflow: visible !important; padding-bottom: 0 !important; }
   .newgen-groups-list .newgen-group-card { width: 100% !important; }
-  .withdrawal-groups-layout:not(.has-open-group) .withdrawal-detail { display: none; }
   .withdrawal-group-period, .withdrawal-group-organization, .withdrawal-group-number { display: none; }
   .newgen-mobile-group-label { display: block !important; overflow: hidden; margin: 0; color: inherit; font-size: .78rem; font-weight: 900; line-height: 1.25rem; text-overflow: ellipsis; white-space: nowrap; }
   .newgen-mobile-group-label span { font-weight: 700; }
   .newgen-group-card { width: min(78vw, 18rem) !important; padding: .65rem .8rem !important; }
   .withdrawal-center .withdrawal-detail { border-radius: 20px !important; }
+  .withdrawal-group-modal-backdrop { align-items: end; padding: .65rem; }
+  .withdrawal-group-modal { max-height: calc(100dvh - 1.3rem); border-radius: 22px 22px 18px 18px !important; }
   .withdrawal-table { min-width: 540px; }
   .withdrawal-table tbody td { padding-top: .75rem; padding-bottom: .75rem; }
   .withdrawal-modal-backdrop { align-items: end; padding: .65rem; }
