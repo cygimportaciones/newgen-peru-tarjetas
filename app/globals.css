@@ -348,7 +348,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .newgen-content { padding: 1rem .75rem 1.35rem !important; }
   .newgen-content > h1 { display: none; }
   .withdrawal-center > div:first-child { margin-top: .15rem !important; }
-  .withdrawal-center > section { margin-top: .8rem !important; }
+  .withdrawal-center > section { margin-top: .15rem !important; }
   .withdrawal-center > section { padding: 1rem !important; border-radius: 20px !important; }
   .withdrawal-center .withdrawal-detail { border-radius: 20px !important; }
   .withdrawal-table { min-width: 540px; }
