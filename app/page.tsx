@@ -128,7 +128,7 @@ export default function Home() {
 
     <section className="newgen-workspace min-w-0 flex-1">
       <header className="newgen-topbar"><button aria-label="Abrir menú" onClick={() => setMobileMenuOpen(true)} className="newgen-mobile-menu"><i /><i /><i /></button><div className="newgen-topbar-title"><span className="newgen-desktop-section-icon" aria-hidden="true">{pageIcon}</span><p><span className="newgen-desktop-title">{pageTitle}</span><span className="newgen-mobile-title">{pageTitle}</span></p></div><div className="newgen-user-badge"><span>●</span><div><b>Admin / Luis</b></div></div></header>
-      <div className="newgen-content p-5 sm:p-8 lg:p-10">
+      <div className={`newgen-content p-5 sm:p-8 lg:p-10 ${tab === 'Retiros' ? 'newgen-retiros-content' : ''}`}>
           <h1 className="text-3xl font-black text-slate-900">{pageTitle}</h1>
           {(tab === 'Retiros' || tab === 'Enviadas' || tab === 'Faltantes' || tab === 'Incidencias') && <WithdrawalCenter activeSection={tab} onNavigate={section => setTab(section)} />}
         {tab === 'Retiros' && <div className="mt-5 max-w-sm"><label className="text-xs font-black uppercase tracking-[.12em] text-slate-500">Buscar por número de grupo<input type="search" inputMode="numeric" value={groupSearch} placeholder="Ej. 802, 091, 078" onChange={event => setGroupSearch(event.currentTarget.value)} className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-800 outline-none focus:border-emerald-500" /></label></div>}

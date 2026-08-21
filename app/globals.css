@@ -163,6 +163,7 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 .newgen-user-badge small { margin-top: .18rem; color: rgba(255,255,255,.78); font-size: .67rem; font-weight: 700; }
 .newgen-content { min-height: calc(100vh - 78px); }
 .newgen-content > h1 { display: none; }
+@media (min-width: 768px) { .newgen-retiros-content { padding-top: 1rem !important; } }
 
 /* Detalle de retiros: el grupo queda como título principal y las filas se leen con rapidez. */
 .min-h-72 p.text-xs.font-black.uppercase.text-emerald-700 {
