@@ -354,6 +354,10 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .withdrawal-center > section { padding: 1rem !important; border-radius: 20px !important; }
   .withdrawal-intro { display: none; }
   .newgen-registered-title { font-size: 1rem !important; }
+  .withdrawal-groups-panel { margin-top: .25rem !important; }
+  .newgen-groups-list { display: grid !important; gap: .45rem; overflow: visible !important; padding-bottom: 0 !important; }
+  .newgen-groups-list .newgen-group-card { width: 100% !important; }
+  .withdrawal-groups-layout:not(.has-open-group) .withdrawal-detail { display: none; }
   .withdrawal-group-period, .withdrawal-group-organization, .withdrawal-group-number { display: none; }
   .newgen-mobile-group-label { display: block !important; overflow: hidden; margin: 0; color: inherit; font-size: .78rem; font-weight: 900; line-height: 1.25rem; text-overflow: ellipsis; white-space: nowrap; }
   .newgen-mobile-group-label span { font-weight: 700; }
