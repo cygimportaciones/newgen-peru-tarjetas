@@ -315,15 +315,15 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
     padding: .82rem .9rem !important;
     border-radius: 14px;
     justify-content: center;
-    font-size: 1.24rem !important;
+    font-size: 1.1rem !important;
     line-height: 1.1;
     text-align: center !important;
   }
-  .newgen-sidebar nav button span { display: inline; margin: 0 .72rem 0 0 !important; font-size: 1.42rem !important; }
+  .newgen-sidebar nav button span { display: inline; margin: 0 .65rem 0 0 !important; font-size: 1.28rem !important; }
   .newgen-sidebar > div:nth-of-type(2) { margin-top: .75rem !important; }
   .newgen-sidebar > div:nth-of-type(2) > p { display: block; }
   .newgen-user-card { border-radius: 18px !important; padding: .85rem !important; }
-  .newgen-user-card > p { font-size: .94rem !important; line-height: 1.5rem !important; text-align: center; }
+  .newgen-user-card > p { font-size: .84rem !important; line-height: 1.35rem !important; text-align: center; }
   .newgen-user-card > div { margin-top: .55rem !important; }
   .newgen-role-badge { padding: .35rem .75rem !important; font-size: .67rem !important; }
   .newgen-sidebar > button:last-child { margin-top: .75rem !important; padding: .85rem 1rem !important; font-size: .82rem !important; }
