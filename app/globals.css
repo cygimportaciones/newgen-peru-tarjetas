@@ -281,6 +281,8 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
 }
 .withdrawal-group-modal .withdrawal-table thead { color: #b9e9d4; }
 .withdrawal-group-modal .withdrawal-table tbody tr:hover td { background: #c9f5de; }
+.withdrawal-group-modal-title p { color: #a7f3d0; font-size: 1.1rem; font-weight: 900; letter-spacing: .03em; }
+.withdrawal-group-modal-title span { color: #fff; }
 
 @media (max-width: 640px) {
   .newgen-topbar { min-height: 82px; padding: 1rem 1.25rem; }
@@ -383,11 +385,13 @@ main > div > section > h1 { padding-bottom:1.2rem; border-bottom:2px solid #dcec
   .withdrawal-group-modal-backdrop { align-items: end; padding: .65rem; }
   .withdrawal-group-modal { max-height: calc(100dvh - 1.3rem); border-radius: 22px 22px 18px 18px !important; }
   .withdrawal-group-modal-header { position: relative; display: block !important; padding-right: 3rem; }
-  .withdrawal-group-modal-controls { display: block !important; margin-top: .5rem; }
-  .withdrawal-group-modal-controls > p { margin-bottom: .45rem; }
+  .withdrawal-group-modal-controls { display: flex !important; align-items: center !important; gap: .65rem !important; margin-top: .5rem; }
+  .withdrawal-group-modal-controls > p { margin-bottom: 0; white-space: nowrap; }
   .withdrawal-group-modal-controls > div { display: flex !important; align-items: center; flex-wrap: wrap; gap: .45rem !important; }
   .withdrawal-group-modal-controls > div > button:first-child { position: absolute; top: 0; right: 0; }
   .withdrawal-group-modal-controls > div > button:not(:first-child) { padding-top: .58rem; padding-bottom: .58rem; }
+  .withdrawal-member-summary { align-items: center; }
+  .withdrawal-member-summary > span { border-radius: .5rem; }
   .withdrawal-table { min-width: 540px; }
   .withdrawal-table tbody td { padding-top: .75rem; padding-bottom: .75rem; }
   .withdrawal-modal-backdrop { align-items: end; padding: .65rem; }
