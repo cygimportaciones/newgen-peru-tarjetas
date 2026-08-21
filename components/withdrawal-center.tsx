@@ -47,6 +47,7 @@ export function WithdrawalCenter({ activeSection, onNavigate }: { activeSection:
   const [readingMember, setReadingMember] = useState<ReadingMember | null>(storedReadingMember)
   const [showAccountInfo, setShowAccountInfo] = useState(false)
   const reportedRowTap = useRef<{ actionId: string; timestamp: number } | null>(null)
+  const memberOptionTap = useRef<{ groupId: string; sourceRow: number; timestamp: number } | null>(null)
   const [loadingGroup, setLoadingGroup] = useState(false)
   const [importing, setImporting] = useState(false)
   const [savingAction, setSavingAction] = useState(false)
@@ -175,11 +176,21 @@ export function WithdrawalCenter({ activeSection, onNavigate }: { activeSection:
 
   function interactWithMember(member: WithdrawalMember, action?: WithdrawalMemberAction) {
     if (action) {
+      memberOptionTap.current = null
       openReportedAction(action)
       return
     }
     if (openGroupId) setReadingMember({ groupId: openGroupId, sourceRow: member.sourceRow })
-    if (selectionMode) setSelectedMember(member)
+    if (selectionMode || !openGroupId) return
+
+    const now = Date.now()
+    const previousTap = memberOptionTap.current
+    if (previousTap?.groupId === openGroupId && previousTap.sourceRow === member.sourceRow && now - previousTap.timestamp < 450) {
+      memberOptionTap.current = null
+      setSelectedMember(member)
+      return
+    }
+    memberOptionTap.current = { groupId: openGroupId, sourceRow: member.sourceRow, timestamp: now }
   }
 
   async function clearRegistry() {
@@ -237,7 +248,7 @@ export function WithdrawalCenter({ activeSection, onNavigate }: { activeSection:
                 const selected = selectedMember?.sourceRow === member.sourceRow
                 const reading = readingMember?.groupId === openGroupId && readingMember.sourceRow === member.sourceRow
                 const tone = action?.actionType === 'sent' ? 'border-emerald-300 bg-emerald-50' : action?.actionType === 'bank_unrecognized' ? 'border-red-300 bg-red-50' : action?.actionType === 'missing' ? 'border-violet-300 bg-violet-50' : reading ? 'border-emerald-400 bg-emerald-100 ring-2 ring-emerald-300' : 'border-slate-200 bg-white'
-                return <button type="button" key={`${member.fullName}-${index}`} onClick={() => interactWithMember(member, action)} onDoubleClick={() => { if (!action) setSelectedMember(member) }} className={`w-full rounded-2xl border p-2.5 text-left shadow-sm ${tone} ${selectionMode ? 'active:scale-[.99]' : ''}`}>
+                return <button type="button" key={`${member.fullName}-${index}`} onClick={() => interactWithMember(member, action)} className={`w-full rounded-2xl border p-2.5 text-left shadow-sm ${tone} ${selectionMode ? 'active:scale-[.99]' : ''}`}>
                   <div className="withdrawal-member-summary flex items-start justify-between gap-1.5"><p className="min-w-0 text-[13px] font-black leading-5 text-slate-900">{member.fullName}</p><span className="shrink-0 rounded-lg bg-emerald-100 px-1.5 py-0.5 text-[11px] font-black text-emerald-800">N° tjta {member.cardNumber}</span></div>
                   <div className="mt-1.5 grid grid-cols-2 gap-2 border-t border-slate-200/70 pt-1.5 text-left text-[12px] leading-4">
                     <p className="whitespace-nowrap"><b className="mr-1 uppercase tracking-wide text-slate-500">DNI:</b><span className="font-black text-slate-800">{member.dni}</span></p>
@@ -248,7 +259,7 @@ export function WithdrawalCenter({ activeSection, onNavigate }: { activeSection:
               })}
               {groupMembers.length === 0 && <p className="py-5 text-sm text-slate-500">Este grupo aún no tiene integrantes registrados.</p>}
             </div>
-            <div className="mt-4 hidden overflow-x-auto md:block"><table className="withdrawal-table min-w-full text-left text-sm"><thead className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500"><tr><th className="px-2 py-2">Apellidos y nombres</th><th className="px-2 py-2">N° tjta</th><th className="px-2 py-2">DNI</th><th className="px-2 py-2">Clave</th></tr></thead><tbody>{groupMembers.map((member, index) => { const action = actionFor(member); const selected = selectedMember?.sourceRow === member.sourceRow; const reading = readingMember?.groupId === openGroupId && readingMember.sourceRow === member.sourceRow; return <tr key={`${member.fullName}-${index}`} data-status={action?.actionType} data-reading={reading || undefined} aria-selected={selected || reading} onClick={() => interactWithMember(member, action)} onDoubleClick={() => { if (!action) setSelectedMember(member) }} className={`${selectionMode ? 'cursor-pointer ring-inset hover:ring-2 hover:ring-emerald-400' : 'cursor-pointer'} ${selected ? 'ring-2 ring-emerald-600' : ''}`}><td className="px-2 py-3 font-semibold text-slate-800">{member.fullName}</td><td className="px-2 py-3 text-slate-600">{member.cardNumber}</td><td className="px-2 py-3 text-slate-600">{member.dni}</td><td className="px-2 py-3 text-slate-600">{member.cardKey}</td></tr> })}</tbody></table>{groupMembers.length === 0 && <p className="py-5 text-sm text-slate-500">Este grupo aún no tiene integrantes registrados.</p>}</div>
+            <div className="mt-4 hidden overflow-x-auto md:block"><table className="withdrawal-table min-w-full text-left text-sm"><thead className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500"><tr><th className="px-2 py-2">Apellidos y nombres</th><th className="px-2 py-2">N° tjta</th><th className="px-2 py-2">DNI</th><th className="px-2 py-2">Clave</th></tr></thead><tbody>{groupMembers.map((member, index) => { const action = actionFor(member); const selected = selectedMember?.sourceRow === member.sourceRow; const reading = readingMember?.groupId === openGroupId && readingMember.sourceRow === member.sourceRow; return <tr key={`${member.fullName}-${index}`} data-status={action?.actionType} data-reading={reading || undefined} aria-selected={selected || reading} onClick={() => interactWithMember(member, action)} className={`${selectionMode ? 'cursor-pointer ring-inset hover:ring-2 hover:ring-emerald-400' : 'cursor-pointer'} ${selected ? 'ring-2 ring-emerald-600' : ''}`}><td className="px-2 py-3 font-semibold text-slate-800">{member.fullName}</td><td className="px-2 py-3 text-slate-600">{member.cardNumber}</td><td className="px-2 py-3 text-slate-600">{member.dni}</td><td className="px-2 py-3 text-slate-600">{member.cardKey}</td></tr> })}</tbody></table>{groupMembers.length === 0 && <p className="py-5 text-sm text-slate-500">Este grupo aún no tiene integrantes registrados.</p>}</div>
           </>}
         </></div></div>}
       </div></div>}
